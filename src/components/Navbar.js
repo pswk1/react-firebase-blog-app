@@ -1,6 +1,7 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -91,7 +92,7 @@ const Navbar = ({ isAuth, signUserOut }) => {
 									</Link>
 								</MenuItem>
 							) : (
-                                <button onClick={signUserOut}>Log Out</button>
+                                <Button variant='contained' onClick={signUserOut}>Log Out</Button>
                             )}
 						</Menu>
 					</Box>
@@ -115,7 +116,7 @@ const Navbar = ({ isAuth, signUserOut }) => {
 								<Typography textAlign='center'>Login</Typography>
 							</Link>
 						) : (
-                            <button onClick={signUserOut}>Log Out</button>
+                            <Button variant='default' onClick={signUserOut}>Log Out</Button>
                         )}
 					</Box>
 
