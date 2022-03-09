@@ -11,13 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
 
-const pages = [
-	{ text: 'Home', to: '/' },
-	{ text: 'Create Post', to: '/create-post' },
-	{ text: 'Login', to: '/login' },
-];
-
-const Navbar = () => {
+const Navbar = ({ isAuth, signUserOut }) => {
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [setAnchorElUser] = React.useState(null);
 
@@ -74,15 +68,31 @@ const Navbar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages.map((page) => (
-								<MenuItem key={page.text} onClick={handleCloseNavMenu}>
-									<Link to={page.to}>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Link to='/'>
+									<Typography color='primary' textAlign='center'>
+										Home
+									</Typography>
+								</Link>
+							</MenuItem>
+							<MenuItem onClick={handleCloseNavMenu}>
+								<Link to='/create-post'>
+									<Typography color='primary' textAlign='center'>
+										Create Post
+									</Typography>
+								</Link>
+							</MenuItem>
+							{!isAuth ? (
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Link to='/login'>
 										<Typography color='primary' textAlign='center'>
-											{page.text}
+											Login
 										</Typography>
 									</Link>
 								</MenuItem>
-							))}
+							) : (
+                                <button onClick={signUserOut}>Log Out</button>
+                            )}
 						</Menu>
 					</Box>
 					<Typography
@@ -94,17 +104,25 @@ const Navbar = () => {
 						My Blog
 					</Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
-							<Link to={page.to}>
-								<Typography textAlign='center'>{page.text}</Typography>
+						<Link to='/'>
+							<Typography textAlign='center'>Home</Typography>
+						</Link>
+						<Link to='/create-post'>
+							<Typography textAlign='center'>Create Post</Typography>
+						</Link>
+						{!isAuth ? (
+							<Link to='/login'>
+								<Typography textAlign='center'>Login</Typography>
 							</Link>
-						))}
+						) : (
+                            <button onClick={signUserOut}>Log Out</button>
+                        )}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
-							</IconButton>
+						<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+							<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+						</IconButton>
 					</Box>
 				</Toolbar>
 			</Container>
