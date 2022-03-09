@@ -76,13 +76,15 @@ const Navbar = ({ isAuth, signUserOut }) => {
 									</Typography>
 								</Link>
 							</MenuItem>
-							<MenuItem onClick={handleCloseNavMenu}>
-								<Link to='/create-post'>
-									<Typography color='primary' textAlign='center'>
-										Create Post
-									</Typography>
-								</Link>
-							</MenuItem>
+							{isAuth && (
+								<MenuItem onClick={handleCloseNavMenu}>
+									<Link to='/create-post'>
+										<Typography color='primary' textAlign='center'>
+											Create Post
+										</Typography>
+									</Link>
+								</MenuItem>
+							)}
 							{!isAuth ? (
 								<MenuItem onClick={handleCloseNavMenu}>
 									<Link to='/login'>
@@ -92,8 +94,10 @@ const Navbar = ({ isAuth, signUserOut }) => {
 									</Link>
 								</MenuItem>
 							) : (
-                                <Button variant='contained' onClick={signUserOut}>Log Out</Button>
-                            )}
+								<Button variant='contained' onClick={signUserOut}>
+									Log Out
+								</Button>
+							)}
 						</Menu>
 					</Box>
 					<Typography
@@ -108,16 +112,21 @@ const Navbar = ({ isAuth, signUserOut }) => {
 						<Link to='/'>
 							<Typography textAlign='center'>Home</Typography>
 						</Link>
-						<Link to='/create-post'>
-							<Typography textAlign='center'>Create Post</Typography>
-						</Link>
+						{isAuth && (
+							<Link to='/create-post'>
+								<Typography textAlign='center'>Create Post</Typography>
+							</Link>
+						)}
+
 						{!isAuth ? (
 							<Link to='/login'>
 								<Typography textAlign='center'>Login</Typography>
 							</Link>
 						) : (
-                            <Button variant='default' onClick={signUserOut}>Log Out</Button>
-                        )}
+							<Button variant='default' onClick={signUserOut}>
+								Log Out
+							</Button>
+						)}
 					</Box>
 
 					<Box sx={{ flexGrow: 0 }}>
