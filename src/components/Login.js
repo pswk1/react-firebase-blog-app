@@ -1,6 +1,10 @@
 import React from 'react';
 import { auth, provider } from '../firebase-config';
-import { signInWithPopup } from 'firebase/auth';
+import {
+	signInWithPopup,
+	setPersistence,
+	browserSessionPersistence,
+} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button';
 import Grid from '@mui/material/Grid';
@@ -10,10 +14,10 @@ const Login = ({ setIsAuth }) => {
 	const navigate = useNavigate();
 
 	const signInWithGoogle = () => {
-		signInWithPopup(auth, provider)
-			.then((result) => {
-				localStorage.setItem('isAuth', true);
+		setPersistence(auth, browserSessionPersistence)
+			.then(() => {
 				setIsAuth(true);
+				signInWithPopup(auth, provider);
 				navigate('/');
 			})
 			.catch((error) => {
@@ -29,7 +33,9 @@ const Login = ({ setIsAuth }) => {
 			padding={6}
 		>
 			<Grid item marginBottom={5}>
-				<Typography noWrap variant='h4'>Sign In With Google to Continue</Typography>
+				<Typography noWrap variant='h4'>
+					Sign In With Google to Continue
+				</Typography>
 			</Grid>
 
 			<Grid item>
