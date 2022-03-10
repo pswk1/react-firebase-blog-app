@@ -24,7 +24,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login setIsAuth={setIsAuth} />} />
-				<Route path='/create-post' element={<CreatePost />} />
+				<Route path='/create-post' element={<CreatePost isAuth={isAuth} />} />
 			</Routes>
 		</Router>
 	);
