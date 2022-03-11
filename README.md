@@ -3,6 +3,9 @@
 ## Description
 A fullstack blog app built with React, Firebase, and Material-UI
 
+## Demo
+<img src='/demo/Blog App.gif' alt='blog app demo gif'>
+
 ## Tech
 - React
 - Javascript
