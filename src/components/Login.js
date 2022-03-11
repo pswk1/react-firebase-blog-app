@@ -16,9 +16,9 @@ const Login = ({ setIsAuth }) => {
 	const signInWithGoogle = () => {
 		setPersistence(auth, browserSessionPersistence)
 			.then(() => {
-				setIsAuth(true);
 				signInWithPopup(auth, provider);
 				navigate('/');
+				setIsAuth(true);
 			})
 			.catch((error) => {
 				console.log(error);

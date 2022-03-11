@@ -18,6 +18,8 @@ function App() {
 			window.location.pathname = '/login';
 		});
 	};
+	
+
 	return (
 		<Router>
 			<Navbar isAuth={isAuth} signUserOut={signUserOut} />

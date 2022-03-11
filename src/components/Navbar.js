@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,10 +12,11 @@ import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase-config';
 
 const Navbar = ({ isAuth, signUserOut }) => {
-	const [anchorElNav, setAnchorElNav] = React.useState(null);
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [anchorElNav, setAnchorElNav] = useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -41,7 +43,10 @@ const Navbar = ({ isAuth, signUserOut }) => {
 						component='div'
 						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
 					>
-						My Blog
+						{auth.currentUser !== null
+							? `${auth.currentUser.displayName}'s Blog`
+							: 'My Blog'
+						}
 					</Typography>
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -128,7 +133,14 @@ const Navbar = ({ isAuth, signUserOut }) => {
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='More options'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								<Avatar
+									alt='user profile'
+									src={
+										auth.currentUser !== null
+											? auth.currentUser.photoURL
+											: '/static/images/avatar/2.jpg'
+									}
+								/>
 							</IconButton>
 						</Tooltip>
 						{isAuth && (
