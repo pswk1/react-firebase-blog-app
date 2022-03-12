@@ -30,3 +30,5 @@ A fullstack blog app built with React, Firebase, and Material-UI
 
 ## Todo
 - persist authentication throughout session
+- consider enabling email/pw authentication
+- test authentication & firebase db functionality
