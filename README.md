@@ -3,6 +3,12 @@
 ## Description
 A fullstack blog app built with React, Firebase, and Material-UI
 
+## Deploy
+[Deployed](https://react-firebase-blog-app-2f8a2.web.app/)
+
+## Tests
+[Tests](https://github.com/pswk1/react-firebase-blog-app/tree/master/src/__tests__)
+
 ## Demo
 <img src='/demo/Blog App.gif' alt='blog app demo gif'>
 
