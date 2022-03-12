@@ -41,6 +41,7 @@ const Navbar = ({ isAuth, signUserOut }) => {
 						variant='h6'
 						noWrap
 						component='div'
+						data-testid='heading'
 						sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
 					>
 						{auth.currentUser !== null
@@ -134,6 +135,7 @@ const Navbar = ({ isAuth, signUserOut }) => {
 						<Tooltip title='More options'>
 							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 								<Avatar
+									data-testid='avatar'
 									alt='user profile'
 									src={
 										auth.currentUser !== null
