@@ -23,6 +23,7 @@ const Home = ({ isAuth }) => {
 	}, [deletePost]);
 
 	const postStyles = {
+		minWidth: '370px',
 		width: '600px',
 		height: 'auto',
 		maxHeight: '600px',
